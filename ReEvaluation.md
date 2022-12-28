@@ -58,4 +58,4 @@ perl AdjustConstantSites.pl AllClust.snps.filtered.fullinfo.clean.fasta 9117544 
 - Log every: 1,000
 - Accounting for invariant sites by manually including the tag `constantSiteWeights='A B C D'` after the `<data>` block
 
-The resulting [XML configuration file](/data/05_Phylogeny/B71_and_PY0925_clust.recomb_masked.BEAST2.xml) was submitted to the [University of Kentucky High Performance Computing Cluster](https://docs.ccs.uky.edu/display/HPC/UK%27s+OpenHPC+Compute+Clusters+-+Help+and+Information) with the following command to compute a Bayesian tip-dated phylogenetic reconstruction:Calculate invariant sites:
+The resulting [XML configuration file]() was submitted to the [University of Kentucky High Performance Computing Cluster](https://docs.ccs.uky.edu/display/HPC/UK%27s+OpenHPC+Compute+Clusters+-+Help+and+Information) using the [BeastIterator.sh](/scripts/BeastIterator.sh) slurm script
