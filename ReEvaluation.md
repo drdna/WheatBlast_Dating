@@ -26,20 +26,14 @@ raxml-ng --all --msa AllClust.snps.filtered.fullinfo.fasta --msa-format FASTA \
 ```bash
 ClonalFrameML AllClust.snps.filtered.fullinfo.fasta.raxml.bestTree AllClust.snps.filtered.fullinfo.fasta
 ```
-5. Putative recombinant sites flagged by ClonalFrame were masked:
+5. Putative recombinant sites flagged by ClonalFrame were masked using [mask_positions.py](https://github.com/Burbano-Lab/wheat-clonal-linage/blob/main/scripts/05_Phylogeny/mask_positions.py):
 ```bash
-python clean_homoplasy_from_fasta.py AllClust.snps.filtered.fullinfo.importation_status.txt \
-AllClust.snps.filtered.fullinfo.fasta > AllClust.snps.filtered.fullinfo.clean.fasta \
-2> AllClust.snps.filtered.fullinfo.recomb-masked.fasta
+python3 mask_positions.py AllClust.snps.filtered.fullinfo.fasta \
+AllClust.snps.filtered.fullinfo.importation_status.txt > AllClust.snps.filtered.fullinfo.clean.fasta
 ```
-6. A new phylogenetic tree was generated for the recombination masked data using RAxML:
-```bash
-raxml-ng --all --msa AllClust.snps.filtered.fullinfo.recomb-masked.fasta --msa-format FASTA \
---data-type DNA --model GTR+G --bs-trees 1000
-```
-7. Generate a sampling dates list:
+6. Generate a sampling dates list:
 ```bash
 grep \> AllClust.snps.filtered.fullinfo.recomb-masked.fasta | sed 's/>//' | awk -F '_' '{print $1 "\t" $2}' > FullDataset.dates
 ```
-8. Analyze phylogenetic signal based on patristic distance - this time to the oldest isolate T25:
+7. Use recombination-free tree output by ClonalFrameML ([AllClust.snps.filtered.fullinfo.fasta_out.labelled_tree.newick](/data/AllClust.snps.filtered.fullinfo.fasta_out.labelled_tree.newick)) to analyze phylogenetic signal based on patristic distance - this time to the oldest isolate T25:
 
