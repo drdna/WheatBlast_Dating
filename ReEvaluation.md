@@ -37,3 +37,4 @@ grep \> AllClust.snps.filtered.fullinfo.recomb-masked.fasta | sed 's/>//' | awk 
 ```
 7. Use recombination-free tree output by ClonalFrameML ([AllClust.snps.filtered.fullinfo.fasta_out.labelled_tree.newick](/data/AllClust.snps.filtered.fullinfo.fasta_out.labelled_tree.newick)) to analyze phylogenetic signal based on patristic distance - this time to the oldest isolate T25:
 
+![Signal70isolates.tiff](/data/Signal70isolates.tiff)
