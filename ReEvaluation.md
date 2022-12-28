@@ -41,7 +41,7 @@ grep \> AllClust.snps.filtered.fullinfo.recomb-masked.fasta | sed 's/>//' | awk 
 
 8. Add sampling date information to fasta headers:
 
-9. Calculate constant sites by using the reported constant sites parameter (constantSiteWeights='9117544 9766162 9779548 9135832') and subtracting sites that exhibited variation when the dataset was expanded. Also subtracted were sites whose variant status was now uncertain due to masking.
+9. Calculate new constant sites by using the reported constant sites parameter (constantSiteWeights='9117544 9766162 9779548 9135832') and subtracting sites that exhibited variation when the dataset was expanded. Also subtracted were sites whose variant status was now uncertain due to masking.
 ```bash
 perl AdjustConstantSites.pl AllClust.snps.filtered.fullinfo.clean.fasta 9117544 9766162 9779548 9135832
 ```
