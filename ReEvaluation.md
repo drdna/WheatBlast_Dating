@@ -22,7 +22,7 @@ tped2fasta AllClust.snps.filtered.fullinfo > AllClust.snps.filtered.fullinfo.fas
 raxml-ng --all --msa AllClust.snps.filtered.fullinfo.fasta --msa-format FASTA \
 --data-type DNA --model GTR+G --bs-trees 1000
 ```
-4. The data were then analyzed using ClonalFrame to detect sites predicted to have been aquired by reocmbination:
+4. The data were then analyzed using ClonalFrame to detect sites predicted to have been aquired by recombination:
 ```bash
 ClonalFrameML AllClust.snps.filtered.fullinfo.fasta.raxml.bestTree AllClust.snps.filtered.fullinfo.fasta
 ```
