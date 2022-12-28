@@ -38,3 +38,24 @@ grep \> AllClust.snps.filtered.fullinfo.recomb-masked.fasta | sed 's/>//' | awk 
 7. Use recombination-free tree output by ClonalFrameML ([AllClust.snps.filtered.fullinfo.fasta_out.labelled_tree.newick](/data/AllClust.snps.filtered.fullinfo.fasta_out.labelled_tree.newick)) to analyze phylogenetic signal based on patristic distance - this time to the oldest isolate T25:
 
 ![Signal70isolates.tiff](/data/Signal70isolates.tiff)
+
+8. Add sampling date information to fasta headers:
+
+9. Calculate constant sites by using the reported constant sites parameter (constantSiteWeights='9117544 9766162 9779548 9135832') and subtracting sites that exhibited variation when the dataset was expanded. Also subtracted were sites whose variant status was now uncertain due to masking.
+```bash
+perl AdjustConstantSites.pl AllClust.snps.filtered.fullinfo.clean.fasta 9117544 9766162 9779548 9135832
+```
+
+10: Use the full [masked fasta file](/data/05_Phylogeny/B71_and_PY0925_clust.snps.filtered.fullinfo.recomb_masked.fasta) as input to create the configuration file with *beauti (BEAST 2)* using the following parameters and options:
+
+- Tips were calibrated using collection dates
+- HKY substitution model
+- Strict Clock rate
+- Uniform prior for the clock rate: [1E-10 to 1E-3] with a starting value of 1E-5
+- Tree prior: Coalescent Extended Bayesian Skyline
+- Monophyletic prior for the different clusters: Zambian isolates; Bangaladeshi isolates ; B71 cluster ; PY0925 cluster
+- Chain length: 20'000,000
+- Log every: 1,000
+- Accounting for invariant sites by manually including the tag `constantSiteWeights='A B C D'` after the `<data>` block
+
+The resulting [XML configuration file](/data/05_Phylogeny/B71_and_PY0925_clust.recomb_masked.BEAST2.xml) was submitted to the [University of Kentucky High Performance Computing Cluster](https://docs.ccs.uky.edu/display/HPC/UK%27s+OpenHPC+Compute+Clusters+-+Help+and+Information) with the following command to compute a Bayesian tip-dated phylogenetic reconstruction:Calculate invariant sites:
