@@ -20,7 +20,7 @@ Then, I built an alignment string that records for each nucleotide in the 70-15 
 ```bash
 perl Create_alignment_stringsv2.pl 70-15.fasta 70-15.B71v2.BLAST 70-15.B71v2.ALIGN
 ```
-Then I used a script to parse the BLAST report, line by line, and asked if each alignment contained any repeats that were flanked on either side by at least 50 nucleotides that were single copy in both genomes. Repeats that satisfied this criterion were considered to be present at the same chromosomal location in both genomes and were allowed to pass the filter:
+Lastly, I used a script to parse the BLAST report, line by line, and asked if each alignment contained any repeats that were flanked on either side by at least 50 nucleotides that were single copy in both genomes. Repeats that satisfied this criterion were considered to be present at the same chromosomal location in both genomes and were allowed to pass the filter:
 ```bash
 perl OrthologousRepeats.pl 70-15.B71v2.ALIGN/70-15.B71v2_alignments 70-15.B71v2.BLAST
 ```
