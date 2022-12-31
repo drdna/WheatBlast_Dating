@@ -16,7 +16,7 @@ This revealed that among 21,535 SNP pairs used in the LD analysis, there were 6,
 blastn -query 70-15.fasta -subject B71v2sh.fasta -evalue 1e-20 -max_target_seqs 20000 -outfmt \
 '6 qseqid sseqid qstart qend sstart send btop' > 70-15.B71v2.BLAST
 ```
-Then, I built an alignment string that records the copy number of each nucleotide in the 70-15 reference genome *in the B71 reference genome*:
+Then, I built an alignment string that records for each nucleotide in the 70-15 reference genome its copy number *in the B71 reference genome*:
 ```bash
 perl Create_alignment_stringsv2.pl 70-15.fasta 70-15.B71v2.BLAST 70-15.B71v2.ALIGN
 ```
