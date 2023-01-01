@@ -1,7 +1,7 @@
 # (In)Validation of the Latorre dataset used for Linkage Disequilibrium analysis
 
 ## Background
-Linkage disequilibrium studies involve analyses of the association between pairs of nucleotide variants as a function of their separation along the chromosome. For such analyses to provide an accurate picture of the recombination landscape, certain criteria absolutely must be met:
+Linkage disequilibrium studies involve analyzing the association between pairs of nucleotide variants as a function of their separation along the chromosome. For such analyses to provide an accurate picture of the recombination landscape, certain criteria absolutely must be met:
 a) The single nucleotide polymorphisms being studied must be true SNPs, otherwise, unless the same invalid SNPs are called in every sample, false recombination signals will be detected.
 b) The chromosomal position of each SNP must be accurately assigned, otherwise assessment of linkage disequilibrium (LD) decay rates will be inaccurate/invalid.
 c) One should not use SNPs that occur inside repeated sequences, otherwise there is a danger that both the called SNP *AND* its chromosomal location will be invalid. This is especially so when using SNPs called against a reference genome with a substantially different genetic background to the population(s) under study, because there is even the possibility that a SNP will be called when the test strain is null for the repeat copy in question.
