@@ -2,9 +2,9 @@
 
 ## Background
 Linkage disequilibrium studies involve analyzing the association between pairs of nucleotide variants as a function of their separation along the chromosome. For such analyses to provide an accurate picture of the recombination landscape, certain criteria absolutely must be met:
-a) The single nucleotide polymorphisms being studied must be true SNPs, otherwise, unless the same invalid SNPs are called in every sample, false recombination signals will be detected.
-b) The chromosomal position of each SNP must be accurately assigned, otherwise assessment of linkage disequilibrium (LD) decay rates will be inaccurate/invalid.
-c) One should not use SNPs that occur inside repeated sequences, otherwise there is a danger that both the called SNP *AND* its chromosomal location will be invalid. This is especially so when using SNPs called against a reference genome with a substantially different genetic background to the population(s) under study, because there is even the possibility that a SNP will be called when the test strain is null for the repeat copy in question.
+-The single nucleotide polymorphisms being studied must be true SNPs, otherwise, unless the same invalid SNPs are called in every sample, false recombination signals will be detected.
+-The chromosomal position of each SNP must be accurately assigned, otherwise assessment of linkage disequilibrium (LD) decay rates will be inaccurate/invalid.
+-One should not use SNPs that occur inside repeated sequences, otherwise there is a danger that both the called SNP *AND* its chromosomal location will be invalid. This is especially so when using SNPs called against a reference genome with a substantially different genetic background to the population(s) under study, because there is even the possibility that a SNP will be called when the test strain is null for the repeat copy in question.
 
 1. The number one cause of invalid SNP calls is the failure to recognize false variants that occur in repeated regions of the reference genome. Therefore, I sought to determine how many SNPs used in the [Latorre LD dataset](https://github.com/Burbano-Lab/wheat-clonal-linage/blob/main/data/04_Recombination/B71_cluster.LD.gz) came from sequences that are repeated in the reference genome but for which there is no evidence that a repeat exists at that position in the query genomes. To accomplish this, I first BLASTED the 70-15 reference genome aginst the latest, chromosome-level assembly for B71:
 ```bash
