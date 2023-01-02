@@ -25,3 +25,10 @@ perl NonOrthologousLDcomparisons.pl 70-15.B71v2.orthologous B71_clust.LD.gz
 - This revealed that among the 21,535 pairwise SNP comparisons used in the published LD study, 12,434 (57.7%) included at least one SNP that resides within a repeat in the 70-15 genome, and for which there was no evidence that the same repeat exists at an equivalent location in the B71 genome.
 
 4. Finally, to explore these suspicious SNP calls in more detail, I used [FACET]() to realign the 70-15 x B71v2 genomes and produce outputs in GFF format. At the same time, both genomes were aligned with a .fasta file comprising a comprehensive set of *P. oryzae* repeats (mostly transposons). The two sets of alignments were then visualized in the IGV browser. For Chr1 SNP positions 110,315 vs 2,865,521, the second SNP is in a MGL retrotransposon with >30 copies in the B71 genome and over 50 copies in the 70-15 reference. More importantly, there is no MGL copy at the corresponding genomic position because B71 has a 110 kb sequence at that location that is missing in 70-15. Likewise, the next 52 comparisons between SNPs at Chr1 positions 335,274 and 337,273 and others at various positions along the chromosome, are also invalid because these two sites are in repeats that are not present in the B71 genome which happens to have a 200 kb deletion spanning the entire locus.
+## Plotting the distribution of SNPs after filtering out variants called in non-orthologous repeats
+1. Generate a dataframe:
+```bash
+zgrep '' Downloads/B71_cluster.LD.gz | awk '{print $1 $2 "\n" $1 $3}' | grep -v super | \
+grep ^[1-7] | sort | awk '{print "Chr" substr($1, 1, 1) "\t" substr($1, 2, 7)}' > LD_data_distr.txt
+```
+2. Plot the datapoints using the [SNPdistribution.R](/scripts/SNPdistribution.R) script:
