@@ -31,4 +31,4 @@ perl NonOrthologousLDcomparisons.pl 70-15.B71v2.orthologous B71_clust.LD.gz
 zgrep '' Downloads/B71_cluster.LD.gz | awk '{print $1 $2 "\n" $1 $3}' | grep -v super | \
 grep ^[1-7] | sort | awk '{print "Chr" substr($1, 1, 1) "\t" substr($1, 2, 7)}' > LD_data_distr.txt
 ```
-2. Plot the datapoints using the [SNPdistribution.R](/scripts/SNPdistribution.R) script:
+2. Plot the datapoints using the [SNPdistribution70-15ref.R](/scripts/SNPdistribution70-15ref.R) script:
