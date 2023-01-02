@@ -18,7 +18,7 @@ perl Create_alignment_stringsv2.pl 70-15.fasta 70-15.B71v2.BLAST 70-15.B71v2.ALI
 ```bash
 perl OrthologousRepeats.pl 70-15.B71v2.ALIGN/70-15.B71v2_alignments 70-15.B71v2.BLAST
 ```
-3. Using the ortholog-correct alignment string, I then used the [NonOrthologousLDcomparisons.pl](/scripts/NonOrthologousLDcomparisons.pl) to re-interrogate the [B71clust_LD.gz](https://github.com/Burbano-Lab/wheat-clonal-linage/blob/main/data/04_Recombination/B71_cluster.LD.gz) data file used in the published LD analysis to determine how many of the pairwise comparisons involved at least one SNP that occurred in a repeated segment of the 70-15 genome for which there was no evidence that a repeat was present at the dsame location in the B71 assembly.
+3. Using the ortholog-correct alignment string, I then used the [NonOrthologousLDcomparisons.pl](/scripts/NonOrthologousLDcomparisons.pl) to re-interrogate the [B71clust_LD.gz](https://github.com/Burbano-Lab/wheat-clonal-linage/blob/main/data/04_Recombination/B71_cluster.LD.gz) data file used in the published LD analysis to determine how many of the pairwise comparisons involved at least one SNP that occurred in a repeated segment of the 70-15 genome for which there was no evidence that a repeat was present at the same location in the B71 assembly.
 ```bash
 perl NonOrthologousLDcomparisons.pl 70-15.B71v2.orthologous B71_clust.LD.gz
 ```
