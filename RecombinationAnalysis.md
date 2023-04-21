@@ -5,6 +5,7 @@ Linkage disequilibrium studies involve analyzing the association between pairs o
 - The single nucleotide polymorphisms being studied must be true SNPs, otherwise, unless the same invalid SNPs are called in every sample, false recombination signals will be detected.
 - The chromosomal position of each SNP must be accurately assigned, otherwise assessment of linkage disequilibrium (LD) decay rates will be inaccurate/invalid.
 - One should not use SNPs that occur inside repeated sequences, otherwise there is a danger that both the called SNP *AND* its chromosomal location will be invalid. This is especially so when using SNPs called against a reference genome with a substantially different genetic background to the population(s) under study. This is because SNPs are often called in repeats at certain genomic locations, even when the test genome(s) don't have copies of the repeat in those positions.
+
 1. The number one cause of invalid SNP calls is the failure to recognize false variants that occur in repeated regions of the reference genome. Therefore, I sought to determine how many SNPs used in the [Latorre LD dataset](https://github.com/Burbano-Lab/wheat-clonal-linage/blob/main/data/04_Recombination/B71_cluster.LD.gz) came from sequences that are repeated in the reference genome but for which there is no evidence that a repeat exists at that position in the query genomes. To accomplish this, I first BLASTED the 70-15 reference genome aginst the latest, chromosome-level assembly for B71:
 ```bash
 blastn -query 70-15.fasta -subject B71v2sh.fasta -evalue 1e-20 -max_target_seqs 20000 -outfmt \
@@ -32,3 +33,6 @@ zgrep '' Downloads/B71_cluster.LD.gz | awk '{print $1 $2 "\n" $1 $3}' | grep -v 
 grep ^[1-7] | sort | awk '{print "Chr" substr($1, 1, 1) "\t" substr($1, 2, 7)}' > LD_data_distr.txt
 ```
 2. Plot the datapoints using the [SNPdistribution70-15ref.R](/scripts/SNPdistribution70-15ref.R) script:
+
+## Variable false SNP calls from perfect clones
+1. One might argue that clonal isolates should produce the same false SNP calls and, therefore, have little influence on the ability to detect linkage equilibrium. However, this ignores how the BWT aligner deals with repeated sequences. Unless one specifies that all alignments should be reported, BWT attempts to distributes reads evenly across each repeat in the reference. Consequently, reads with mismatches relative to the reference will be aligned randomly. To illustrate this problem, variants were called using one of the datasets from the study. I then shuffled the dataset, re-aligned it and re-called variants. A comparison of the resulting SNP data revealed significant differences.
