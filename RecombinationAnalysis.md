@@ -36,3 +36,6 @@ grep ^[1-7] | sort | awk '{print "Chr" substr($1, 1, 1) "\t" substr($1, 2, 7)}' 
 
 ## Variable false SNP calls from perfect clones
 1. One might argue that clonal isolates should produce the same false SNP calls and, therefore, have little influence on the ability to detect linkage equilibrium. However, this ignores how the BWT aligner deals with repeated sequences. Unless one specifies that all alignments should be reported, BWT attempts to distributes reads evenly across each repeat in the reference. Consequently, reads with mismatches relative to the reference will be aligned randomly. To illustrate this problem, variants were called using one of the datasets from the study. I then shuffled the dataset, re-aligned it and re-called variants. A comparison of the resulting SNP data revealed significant differences.
+```bash
+paste  <(cat GoogleDrive/ERR2061616/ERR2061616_1.fastq) <(cat GoogleDrive/ERR2061616/ERR2061616_2.fastq) | paste - - - -  | shuf | awk -F'\t' '{OFS="\n"; print $1,$3,$5,$7 > "random.1.fq"; print $2,$4,$6,$8 > "random.2.fq"}'
+```
