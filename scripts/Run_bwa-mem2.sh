@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 #SBATCH --time 24:00:00
 #SBATCH --job-name=bwa-mem2
 #SBATCH --nodes=1
