@@ -21,3 +21,4 @@ sbatch $scripts/Run_GATK.sh
 ```bash
 zgrep '' wheat-blast.raw.snps.vcf.gz | grep '      0:' | awk -F 'QD=' '{print $2}' | awk -F ';' '$1 > 24 && $1 < 34 {print $1}' | wc -l
 ```
+## Final tally of FALSE variants identified by using "gold standard" SNP calling pipeline on 10 shuffled versions of a single fastq  dataset = 381
