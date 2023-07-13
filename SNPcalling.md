@@ -9,3 +9,15 @@ for f in {1..10}; do sbatch $scripts/Run_shuffle.sh $1; done
 ```bash
 for f in {1..10}; do sbatch $scripts/Run-bwa-mem2.sh ERR2061616rnd${f}; done
 ```
+3. Use Run_combineGVCFs.sh to generate a joint haplotype call file:
+```bash
+sbatch $scripts/Run_combineGVCFs.sh
+```
+4. Use Run_GATK.sh to perform joint genotype calling and selection of SNPs:
+```bash
+sbatch $scripts/Run_GATK.sh
+```
+5. Count sites showing variants calls among the 10 shuffled datasets and which meet the QD thresholds used to produce the final Latorre et al. variant calls:
+```bash
+zgrep '' wheat-blast.raw.snps.vcf.gz | grep '      0:' | awk -F 'QD=' '{print $2}' | awk -F ';' '$1 > 24 && $1 < 34 {print $1}' | wc -l
+```
