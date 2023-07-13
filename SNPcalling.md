@@ -5,6 +5,6 @@
 ```bash
 for f in {1..10}; do sbatch $scripts/Run_shuffle.sh $1; done
 ```
-2. Use [Run_bwa-mem2.sh](/scripts/Run_bwa_mem2.sh) to perform alignments using parameters from Latorre et al. 2023:
+2. Use [Run_bwa-mem2.sh](/scripts/Run_bwa-mem2.sh) to perform alignments using parameters from Latorre et al. 2023:
 ```bash
 
