@@ -9,11 +9,11 @@ for f in {1..10}; do sbatch $scripts/Run_shuffle.sh $1; done
 ```bash
 for f in {1..10}; do sbatch $scripts/Run-bwa-mem2.sh ERR2061616rnd${f}; done
 ```
-3. Use Run_combineGVCFs.sh to generate a joint haplotype call file:
+3. Use [Run_combineGVCFs.sh](/scripts/Run_combineGVCFs.sh) to generate a joint haplotype call file:
 ```bash
 sbatch $scripts/Run_combineGVCFs.sh
 ```
-4. Use Run_GATK.sh to perform joint genotype calling and selection of SNPs:
+4. Use [Run_GATK.sh](/scripts/Run_GATK.sh) to perform joint genotype calling and selection of SNPs:
 ```bash
 sbatch $scripts/Run_GATK.sh
 ```
