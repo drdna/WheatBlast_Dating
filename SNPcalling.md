@@ -25,7 +25,7 @@ sbatch $scripts/Run_combineGVCFs.sh
 ```bash
 sbatch $scripts/Run_GATK.sh
 ```
-5. Count sites showing variants calls among the 10 shuffled datasets and which meet the QD thresholds used to produce the final Latorre et al. variant calls:
+5. Count sites showing variable calls among the 10 shuffled datasets and which meet the QD thresholds used to produce the final Latorre et al. variant calls:
 ```bash
 zgrep '' wheat-blast.raw.snps.vcf.gz | grep '      0:' | awk -F 'QD=' '{print $2}' | \
 awk -F ';' '$1 > 24 && $1 < 34 {print $1}' | wc -l
